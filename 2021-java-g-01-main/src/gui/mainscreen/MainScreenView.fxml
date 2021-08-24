@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root spacing="10.0" type="HBox" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="navigation" spacing="10.0">
+         <children>
+            <Button fx:id="btnWelcome" mnemonicParsing="false" onAction="#welcomeButtonPushed" text="Welcome" />
+            <Button fx:id="btnManageContracttypes" mnemonicParsing="false" onAction="#manageContracttypesButtonPushed" text="Manage Contracttypes" />
+            <Button fx:id="btnManageTickets" mnemonicParsing="false" onAction="#manageTicketsButtonPushed" text="Manage Tickets" />
+            <Button fx:id="btnManageCustomers" mnemonicParsing="false" onAction="#manageCustomersButtonPushed" text="Manage Customers" />
+            <Button fx:id="btnManageEmployees" mnemonicParsing="false" onAction="#manageEmployeesButtonPushed" text="Manage Employees" />
+            <Button fx:id="btnAccessKnowledgeBase" mnemonicParsing="false" onAction="#accessKnowledgeBaseButtonPushed" text="Access Knowledge Base" />
+            <Button fx:id="btnStats" mnemonicParsing="false" onAction="#statsButtonPushed" text="Stats" />
+            <Button fx:id="btnLogOut" mnemonicParsing="false" onAction="#logOutButtonPushed" text="Log Out" />
+         </children></VBox>
+      <StackPane fx:id="content" HBox.hgrow="ALWAYS" />
+   </children>
+</fx:root>

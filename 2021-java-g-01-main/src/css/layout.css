@@ -1,0 +1,23 @@
+/** file: nav.css
+ * place in same directory as HyperlinkedNavMenu.java and have your build system copy it
+ * to the same location as HyperlinkedNavMenu.java.class */
+
+.root {
+    -fx-background-color: grey;
+    -fx-padding: 15; 
+    -fx-font-size: 15;
+}
+
+.navbar {
+    -fx-background-color: teal, beige; 
+    -fx-background-radius: 10, 10; 
+    -fx-background-insets: 0, 2; 
+    -fx-font-style: italic; 
+    -fx-padding: 10 15 15 10;
+}
+
+.content {
+    -fx-background-color: aliceblue; 
+    -fx-padding: 15 20 20 15;
+    -fx-effect: dropshadow(gaussian, slategrey, 10, 0, 5, 5);  
+}

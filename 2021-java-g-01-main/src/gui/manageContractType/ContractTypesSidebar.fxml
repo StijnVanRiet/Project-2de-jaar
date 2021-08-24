@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root spacing="10.0" type="VBox" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label graphicTextGap="5.0" text="Contract Types Table">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <MenuButton fx:id="statusFilter" mnemonicParsing="false" text=" Filter On Status" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#filterAllOnAction" text="All" />
+                <MenuItem mnemonicParsing="false" onAction="#filterActiveOnAction" text="Active" />
+                <MenuItem mnemonicParsing="false" onAction="#filterNonActiveOnAction" text="Nonactive" />
+              </items>
+            </MenuButton>
+            <Button fx:id="btnAddContractType" mnemonicParsing="false" onAction="#addContractType" text="Add Contract Type" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </GridPane>
+      <TableView fx:id="contractTypesTable" VBox.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="nameCol" sortable="false" text="Name" />
+            <TableColumn fx:id="statusCol" sortable="false" text="Status" />
+            <TableColumn fx:id="numberOfRunningContractsCol" sortable="false" text="Number Of Running Contracts" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</fx:root>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root spacing="10.0" type="HBox" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane fx:id="navigation" HBox.hgrow="ALWAYS" />
+      <StackPane fx:id="content" HBox.hgrow="ALWAYS" />
+   </children>
+</fx:root>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <persistence-unit name="ProjectII" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>domain.Company</class>
+    <class>domain.Contact</class>
+    <class>domain.Contract</class>
+    <class>domain.Customer</class>
+    <class>domain.Employee</class>
+    <class>domain.User</class>
+    <class>domain.Ticket</class>
+    <class>domain.ContractType</class>
+    
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://ID344958_g01.db.webhosting.be/ID344958_g01?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="ID344958_g01"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="WeLikeTurtles#1"/>
+      <property name="javax.persistence.schema-generation.database.action" value="none"/>
+    </properties>
+  </persistence-unit>
+</persistence>
