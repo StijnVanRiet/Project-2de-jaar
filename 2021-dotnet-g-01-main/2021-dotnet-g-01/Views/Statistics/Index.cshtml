@@ -1,0 +1,60 @@
+﻿@model IEnumerable<_2021_dotnet_g_01.Models.Domain.DataPoint>
+@using _2021_dotnet_g_01.Models.Domain
+
+@{
+    ViewData["Title"] = "Statistics";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <title>Pie Chart</title>
+</head>
+<body>
+    <h2>@ViewData["Title"]</h2>
+
+    <div id="chartContainer"></div>
+    <script type="text/javascript">
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    title: {
+                        text: "Different types of tickets for you"
+                    },
+                    animationEnabled: true,
+                    legend: {
+                        verticalAlign: "center",
+                        horizontalAlign: "left",
+                        fontSize: 20,
+                        fontFamily: "Helvetica"
+                    },
+                    theme: "light2",
+                    data: [
+                        {
+                            type: "pie",
+                            indexLabelFontFamily: "Garamond",
+                            indexLabelFontSize: 20,
+                            indexLabel: "{label} {y}",
+                            startAngle: -20,
+                            showInLegend: true,
+                            toolTipContent: "{legendText} {y}",
+                            dataPoints: @Html.Raw(ViewBag.DataPoints)
+                        }
+                    ]
+                });
+                chart.render();
+            };
+    </script>
+
+</body>
+</html>
+
+
+
+<!--
+<div class="text-center">
+    <img src="~/images/TICKETINFO.png" alt="TICKET INFO CHART" />
+</div>
+    -->

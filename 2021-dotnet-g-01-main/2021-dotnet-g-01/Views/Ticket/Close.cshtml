@@ -1,0 +1,68 @@
+﻿@model _2021_dotnet_g_01.Models.ViewModels.TicketDetailViewModel
+@using _2021_dotnet_g_01.Models.Domain
+
+<h2>Close ticket</h2>
+<hr />
+<h4>
+    Please confirm you want to close ticket: @Model.Title.
+</h4>
+
+<form asp-action="Close" method="post">
+    <div>
+        <button class="btn btn-primary" type="submit">Yes</button>
+        <a asp-action="IndexForSupportManager" class="btn btn-secondary">No</a>
+    </div>
+</form>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Title:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Title
+        </dd>
+        <dt class="col-sm-2">
+            Customer email:
+        </dt>
+        <dd class="col-sm-10">
+            @ViewData["Customer"]
+        </dd>
+        <dt class="col-sm-2">
+            Assigned engineer:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.AssignedEngineer
+        </dd>
+        <dt class="col-sm-2">
+            Contract:
+        </dt>
+        <dd class="col-sm-10">
+            @ViewData["Contract"]
+        </dd>
+        <dt class="col-sm-2">
+            Description:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+        <dt class="col-sm-2">
+            Creation date:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CreationDate.ToLongDateString()
+        </dd>
+        <dt class="col-sm-2">
+            Type:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.TicketType.GetString()
+        </dd>
+        <dt class="col-sm-2">
+            Status:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.TicketStatus
+        </dd>
+    </dl>
+</div>

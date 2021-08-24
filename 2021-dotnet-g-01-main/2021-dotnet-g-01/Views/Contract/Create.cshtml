@@ -1,0 +1,85 @@
+﻿@model _2021_dotnet_g_01.Models.ViewModels.ContractCreateViewModel
+
+@{
+    ViewData["Title"] = "Create contract";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<form method="post" asp-action="Create">
+    @if (Model.Contracts.Any())
+    {
+        <table class="table table-striped table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Start Date
+                    </th>
+                    <th>
+                        End Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Contracts)
+                {
+                    <tr>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.ContractType.Name
+                        </td>
+                        <td>
+                            @item.StartDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @item.EndDate.ToShortDateString()
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="ContractTypeId" class="control-label">Type</label>
+        <select name="ContractTypeId" id="ContractTypeId" asp-for="ContractTypeId" asp-items=@(ViewData["ContractTypes"] as SelectList) class="form-control">
+            <option value=""></option>
+        </select>
+        <span asp-validation-for="ContractTypeId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StartDate" class="control-label">Start date</label>
+        <input asp-for="StartDate" value="" class="form-control" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DurationInYears" class="control-label">Duration in years</label>
+        <input asp-for="DurationInYears" class="form-control" />
+        <span asp-validation-for="DurationInYears" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to Contracts</a>
+</div>
+
+@section scripts {
+    <script asp-src-include="lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script asp-src-include="lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

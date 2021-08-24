@@ -1,0 +1,58 @@
+﻿@model _2021_dotnet_g_01.Models.ViewModels.TicketCreateViewModel
+
+@{
+    ViewData["Title"] = (bool)ViewData["IsEdit"] ? "Edit ticket" : "Create ticket";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label for="TicketType" class="control-label">Type</label>
+        <select name="TicketType" id="TicketType" asp-for="TicketType" asp-items=@(ViewData["TicketTypes"] as SelectList) class="form-control">
+            <option value=""></option>
+        </select>
+        <span asp-validation-for="TicketType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="UserName" class="control-label">Customer</label>
+        <select name="UserName" id="UserName" asp-for="UserName" asp-items=@(ViewData["Customers"] as SelectList) class="form-control">
+            <option value=""></option>
+        </select>
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="AssignedEngineer" class="control-label">Assigned engineer</label>
+        <select name="AssignedEngineer" id="TicketType" asp-for="AssignedEngineer" asp-items=@(ViewData["Engineers"] as SelectList) class="form-control">
+            <option value=""></option>
+        </select>
+        <span asp-validation-for="AssignedEngineer" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a asp-action="IndexForSupportManager" class="btn btn-secondary">Cancel</a>
+    </div>
+
+    <div>
+        <a asp-action="IndexForSupportManager">Back to Tickets</a>
+    </div>
+</form>
+
+@section scripts {
+    <script asp-src-include="lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script asp-src-include="lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

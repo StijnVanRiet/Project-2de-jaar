@@ -1,0 +1,62 @@
+﻿@model _2021_dotnet_g_01.Models.Domain.Contract
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>Contract: @Model.Name</h4>
+<hr />
+<div>
+    <dl class="row">
+        @if ((bool)ViewData["IsSupportManager"])
+        {
+            <dt class="col-sm-2">
+                Customer email:
+            </dt>
+            <dd class="col-sm-10">
+                @ViewData["Customer"]
+            </dd>
+        }
+        <dt class="col-sm-2">
+            Duration:
+        </dt>
+        <dd class="col-sm-10">
+            @if (@Model.DurationInYears == 1)
+            {
+                @($"{Model.DurationInYears} year");
+            }
+            else
+            {
+                @($"{Model.DurationInYears} years");
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Start date:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.StartDate.ToLongDateString()
+        </dd>
+        <dt class="col-sm-2">
+            End date:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EndDate.ToLongDateString()
+        </dd>
+        <dt class="col-sm-2">
+            Status:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ContractStatus.ToString()
+        </dd>
+        <dt class="col-sm-2">
+            Type:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ContractType.Name
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action=@((bool)ViewData["IsSupportManager"]?"IndexForSupportManager":"Index")>Back to Contracts</a>
+</div>

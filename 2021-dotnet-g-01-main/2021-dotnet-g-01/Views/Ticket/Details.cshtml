@@ -1,0 +1,106 @@
+﻿@model _2021_dotnet_g_01.Models.ViewModels.TicketDetailViewModel
+@using _2021_dotnet_g_01.Models.Domain
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>Ticket: @Model.Title</h4>
+<hr />
+<div>
+    <dl class="row">
+        @if ((bool)ViewData["IsSupportManager"])
+        {
+            <dt class="col-sm-2">
+                Customer email:
+            </dt>
+            <dd class="col-sm-10">
+                @ViewData["Customer"]
+            </dd>
+            <dt class="col-sm-2">
+                Assigned engineer:
+            </dt>
+            <dd class="col-sm-10">
+                @Model.AssignedEngineer
+            </dd>
+        }
+        <dt class="col-sm-2">
+            Contract:
+        </dt>
+        <dd class="col-sm-10">
+            @ViewData["Contract"]
+        </dd>
+        <dt class="col-sm-2">
+            Description:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+        <dt class="col-sm-2">
+            Creation date:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CreationDate.ToLongDateString()
+        </dd>
+        <dt class="col-sm-2">
+            Type:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.TicketType.GetString()
+        </dd>
+        <dt class="col-sm-2">
+            Status:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.TicketStatus
+        </dd>
+    </dl>
+</div>
+
+<table class="table table-striped table-sm table-bordered">
+    <tr>
+        <th>Comments:</th>
+    </tr>
+    @foreach (var item in Model.Comments)
+    {
+        <tr>
+            <td>
+                @if (item.GetType() == typeof(Attachment))
+                {
+                    Attachment attachment = item as Attachment;
+                    string[] commentComponents = attachment.Content.Split(":");
+                    commentComponents[0] += ":" ;
+                    @commentComponents[0]
+                <a href="~/attachments/@attachment.Url" target="_blank">@(attachment.Content.Replace(commentComponents[0], ""))</a>
+                }
+                else
+                {
+                    @item.Content
+                }
+
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <input asp-for="Comment" type="text"  />
+        <input multiple asp-for="AttachmentFiles" type="file">
+        <button class="btn btn-outline-primary" type="submit">Add comment or attachment</button>
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+</form>
+
+
+<div>
+    <a asp-action=@((bool)ViewData["IsSupportManager"]?"IndexForSupportManager":"Index")>Back to Tickets</a>
+</div>
+
+@section scripts {
+    <script asp-src-include="lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script asp-src-include="lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using _2021_dotnet_g_01.Models.Domain
+@inject SignInManager<Customer> SignInManager
+@inject UserManager<Customer> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link rounded mx-1 text-light">Hello @User.Identity.Name.Split('@')[0]!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link nav-link rounded mx-1 my-auto bg-secondary text-light">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link nav-link rounded mx-1 bg-secondary text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>
